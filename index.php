@@ -1,58 +1,29 @@
+#!/usr/bin/env php
 <?php
-// Task 1
-echo 'File full name: ' . __FILE__ . "\nNumber of this line: " . __LINE__ . PHP_EOL;
-$multiLineVar = <<<END
-multi
-line
-variable
-END;
-echo $multiLineVar . PHP_EOL;
+echo "Ввод двух чисел: ";
+$userInput = fgets(STDIN);
+$values = explode(" ", trim($userInput));
 
-$user='Ivan';
-$food='fish';
-echo "$user like to eat $food" . PHP_EOL;
-
-// Task 2
-$variable = 3.14;
-//$variable = 3;
-//$variable = 'one';
-//$variable = true;
-//$variable = null;
-//$variable = [];
-
-if (is_bool($variable)) {
-    $type = 'bool';
-} elseif(is_float($variable)) {
-    $type = 'float';
-} elseif(is_int($variable)) {
-    $type = 'int';
-} elseif(is_string($variable)) {
-    $type = 'string';
-} elseif(is_null($variable)) {
-    $type = 'null';
-} else {
-    $type = 'other';
-};
-echo "type is $type" . PHP_EOL;
-
-switch(true) {
-    case is_bool($variable):
-        $type = 'bool';
-        break;
-    case is_float($variable):
-        $type = 'float';
-        break;
-    case is_int($variable):
-        $type = 'int';
-        break;
-    case is_string($variable):
-        $type = 'string';
-        break;
-    case is_null($variable):
-        $type = 'null';
-        break;
-    default:
-        $type = 'other';
+if (count($values) !== 2) {
+    fwrite(STDERR, "Введите, пожалуйста, 2 числа." . PHP_EOL);
+    exit();
 }
-echo "type is $type" . PHP_EOL;
+
+foreach ($values as $value) {
+    if (!is_numeric($value) || intval($value) != $value) {
+        fwrite(STDERR, "Введите, пожалуйста, число." . PHP_EOL);
+        exit();
+    }
+}
+
+$number1 = intval($values[0]);
+$number2 = intval($values[1]);
+
+if ($number2 === 0) {
+    fwrite(STDERR, "Делить на 0 нельзя" . PHP_EOL);
+    exit();
+}
+
+$result = $number1 / $number2;
+echo $result . PHP_EOL;
 ?>
