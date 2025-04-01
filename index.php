@@ -15,7 +15,7 @@ foreach ($values as $value) {
     };
 };
 
-if (intval($values[1]) === 0) {
+if ($values[1] == 0) {
     fwrite(STDERR, "Делить на 0 нельзя" . PHP_EOL);
     exit();
 };
