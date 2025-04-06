@@ -19,7 +19,7 @@ $surnameAndInitials = $last_name . ' ' . mb_substr($first_name, 0, 1)
 . '.' . mb_substr($mid_name, 0, 1) . '.';
 $fio = mb_substr($last_name, 0, 1) . mb_substr($first_name, 0, 1) 
 . mb_substr($mid_name, 0, 1);
-echo "Полное имя: ${fullname}";
-echo "Фамилия и инициалы: ${surnameAndInitials}";
-echo "Аббревиатура: ${fio}";
+echo "Полное имя: ${fullname}\n";
+echo "Фамилия и инициалы: ${surnameAndInitials}\n";
+echo "Аббревиатура: ${fio}\n";
 ?>
