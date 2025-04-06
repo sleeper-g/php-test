@@ -1,24 +1,25 @@
 #!/usr/bin/env php
 <?php
-echo "Ввод двух чисел: ";
-$values = explode(" ", trim(fgets(STDIN)));
-
-if (count($values) !== 2) {
-    fwrite(STDERR, "Введите, пожалуйста, 2 числа." . PHP_EOL);
-    exit();
-} 
-
-foreach ($values as $value) {
-    if (!is_numeric($value)) {
-        fwrite(STDERR, "Введите, пожалуйста, число." . PHP_EOL);
-        exit();
+# requirement: php-mbstring
+function prompt(string $inputQuestion) : string {
+    echo $inputQuestion;
+    $user_input = trim(fgets(STDIN));
+    if ( $user_input ) {
+        return mb_ucfirst($user_input);
+    } else {
+        fwrite(STDOUT, "Ошибка ввода данных\n");
+        exit(0);
     };
 };
-
-if ($values[1] == 0) {
-    fwrite(STDERR, "Делить на 0 нельзя" . PHP_EOL);
-    exit();
-};
-
-fwrite(STDOUT, $values[0] / $values[1] . PHP_EOL);
+$first_name = prompt("Имя: ");
+$last_name = prompt("Фамилия: ");
+$mid_name = prompt("Отчество: ");
+$fullname = "${last_name} ${first_name} ${mid_name}";
+$surnameAndInitials = $last_name . ' ' . mb_substr($first_name, 0, 1) 
+. '.' . mb_substr($mid_name, 0, 1) . '.';
+$fio = mb_substr($last_name, 0, 1) . mb_substr($first_name, 0, 1) 
+. mb_substr($mid_name, 0, 1);
+echo $fullname . PHP_EOL;
+echo $surnameAndInitials . PHP_EOL;
+echo $fio . PHP_EOL;
 ?>
