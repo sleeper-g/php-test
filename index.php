@@ -19,7 +19,7 @@ $surnameAndInitials = $last_name . ' ' . mb_substr($first_name, 0, 1)
 . '.' . mb_substr($mid_name, 0, 1) . '.';
 $fio = mb_substr($last_name, 0, 1) . mb_substr($first_name, 0, 1) 
 . mb_substr($mid_name, 0, 1);
-echo $fullname . PHP_EOL;
-echo $surnameAndInitials . PHP_EOL;
-echo $fio . PHP_EOL;
+echo "Полное имя: ${fullname}";
+echo "Фамилия и инициалы: ${surnameAndInitials}";
+echo "Аббревиатура: ${fio}";
 ?>
