@@ -41,7 +41,7 @@ function generateSchedule(int $year, int $month): void
         if (in_array($i, $schedule)) {
             echo "\033[32m{$i} {$weekday} +\033[0m\n";
         } else {
-            echo "{$i} {$weekday}\n";
+            echo "\033[31m{$i} {$weekday}\033[0m\n";
         }
     }
 }
