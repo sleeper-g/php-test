@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 require_once 'Car.php';
 require_once 'Student.php';
@@ -23,3 +24,4 @@ $tv->turnOn();
 $tv->turnOff();
 TV::showSupportedResolutions();
 
+?>

@@ -1,26 +1,40 @@
 <?php
 declare(strict_types=1);
 
-class Student {
+/**
+ * Class Student
+ */
+class Student 
+
+{
     public $name;
     public $course;
     public static $universityName = "Институт информационных технологий";
 
-    public function __construct($name, $course) {
+    public function __construct($name, $course) 
+
+    {
         $this->name = $name;
         $this->course = $course;
     }
 
-    public function study() {
+    public function study() 
+
+    {
         echo "{$this->name} учится на {$this->course} курсе.<br>";
     }
 
-    public function takeExam($subject) {
+    public function takeExam($subject) 
+
+    {
         echo "{$this->name} сдаёт экзамен по предмету: {$subject}.<br>";
     }
 
-    public static function getUniversityInfo() {
+    public static function getUniversityInfo() 
+
+    {
         echo "Обучение проходит в университете: " . self::$universityName . "<br>";
     }
 }
 
+?>

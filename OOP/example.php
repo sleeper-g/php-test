@@ -24,3 +24,4 @@ $tv->turnOn();
 $tv->turnOff();
 TV::showSupportedResolutions();
 
+?>

@@ -1,27 +1,39 @@
 <?php
+declare(strict_types=1);
 
-class TV {
+class TV 
+
+{
     public $brand;
     public $isOn;
     public static $supportedResolutions = ["720p", "1080p", "4K"];
 
-    public function __construct($brand) {
+    public function __construct($brand) 
+    
+    {
         $this->brand = $brand;
         $this->isOn = false;
     }
 
-    public function turnOn() {
+    public function turnOn() 
+    
+    {
         $this->isOn = true;
         echo "Телевизор {$this->brand} включен.<br>";
     }
 
-    public function turnOff() {
+    public function turnOff() 
+    
+    {
         $this->isOn = false;
         echo "Телевизор {$this->brand} выключен.<br>";
     }
 
-    public static function showSupportedResolutions() {
+    public static function showSupportedResolutions() 
+
+    {
         echo "Поддерживаемые разрешения: " . implode(", ", self::$supportedResolutions) . "<br>";
     }
 }
 
+?>
