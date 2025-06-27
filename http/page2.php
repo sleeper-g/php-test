@@ -1,8 +1,7 @@
 <?php
 declare(strict_types=1);
 
-if (!isset($_GET['text']))
-{
+if (!isset($_GET['text'])) {
     http_response_code(400);
     exit ("Параметр 'test' не передан");
 }
