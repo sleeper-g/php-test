@@ -51,5 +51,3 @@ setlocale(LC_TIME, 'ru_RU.UTF-8');
 
 // вызов с учетом года и месяца
 generateSchedule(2025, 6);
-
-?>
