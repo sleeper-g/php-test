@@ -7,7 +7,7 @@ trait AppUserAuthentication
     private string $appLogin = 'app_user';
     private string $appPassword = 'app_pass';
 
-    public function authenticateApp(string $login, string $password): string|false
+    public function authenticate(string $login, string $password): string|false
     {
         return ($login === $this->appLogin && $password === $this->appPassword)
             ? 'Пользователь авторизован как пользователь приложения.'
@@ -20,7 +20,7 @@ trait MobileUserAuthentication
     private string $mobileLogin = 'mobile_user';
     private string $mobilePassword = 'mobile_pass';
 
-    public function authenticateMobile(string $login, string $password): string|false
+    public function authenticate(string $login, string $password): string|false
     {
         return ($login === $this->mobileLogin && $password === $this->mobilePassword)
             ? 'Пользователь авторизован как пользователь мобильного приложения.'
@@ -30,7 +30,11 @@ trait MobileUserAuthentication
 
 class UserAuthChecker
 {
-    use AppUserAuthentication, MobileUserAuthentication;
+    use AppUserAuthentication, MobileUserAuthentication {
+        AppUserAuthentication::authenticate insteadof MobileUserAuthentication;
+        MobileUserAuthentication::authenticate as authenticateMobile;
+        AppUserAuthentication::authenticate as authenticateApp;
+    }
 
     public function authenticate(string $login, string $password): string
     {
@@ -46,7 +50,6 @@ class UserAuthChecker
     }
 }
 
-// Пример использования
 function runAuthTests(): void
 {
     $checker = new UserAuthChecker();
